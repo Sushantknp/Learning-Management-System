@@ -1,102 +1,66 @@
-LMS – Learning Management System
+⚡ [ Client HTTP Request ] 
+                              │
+                              ▼
+  ┌───────────────────────────────────────────────────────┐
+  │               CONTROLLER (Java Servlets)              │
+  │   • intercepted by mappings / web.xml Filters         │
+  │   • processes request, interacts with Service layers  │
+  └───────────────────────────┬───────────────────────────┘
+                              │
+             ┌────────────────┴────────────────┐
+             ▼                                 ▼
+┌──────────────────────────┐     ┌───────────────────────────┐
+│       MODEL (Java)       │     │        VIEW (JSP)         │
+│  • Business Entities     │     │  • Dynamically rendered   │
+│  • Data Access Objects   │     │  • Bootstrap & JS Grid    │
+│  • Core Database CRUD    │     │  • Expression Language    │
+└────────────┬─────────────┘     └───────────────────────────┘
+             │
+             ▼
+┌──────────────────────────┐
+│     DATA (MySQL App)     │
+└──────────────────────────┘
 
-A full-stack web application designed for managing online courses, quizzes, assignments, materials, and student performance analytics.
+---
 
-📌 Project Overview
+## ✨ Comprehensive Feature Matrix
 
-The Learning Management System (LMS) is built to simplify and automate the management of online education.
-It provides roles for Admin, Instructor, and Student, with separate dashboards and permissions.
+The platform is explicitly partitioned into three operational clearance layers, utilizing custom session control wrappers for strict authorization bounds:
 
-🚀 Features
-👤 User Management
+### 🛠️ 1. Central Administration Dashboard
+* **Dynamic User Management:** End-to-end lifecycle controls (Creation, Modifications, Deactivations) over Instructor and Student rosters.
+* **Global Course Audit:** Total oversight of systemic parameters, structural modules, course categories, and curriculum provisioning.
+* **System Metrics & Reports:** Real-time summary figures tracking active enrollment matrices and platform registration rates.
 
-User registration & login
+### 👨‍🏫 2. Certified Instructor Portal
+* **Course Development Engine:** Construct comprehensive curricula, define modular structural roadmaps, and provision detailed lesson schemas.
+* **Multimedia Repository Management:** Native capability to distribute rich educational documents, structured references, and study outlines.
+* **Student Tracking Roster:** High-fidelity visibility into student sub-distributions, enrollment rosters, and ongoing academic milestones.
 
-Roles:
+### 👨‍🎓 3. Interactive Student Hub
+* **Unified Marketplace Canvas:** Searchable indexing of available academic domains, featuring instantaneous, single-action enrollment sequences.
+* **Curricular Consumption Tracker:** Direct navigation through sequential modular components, text material downloads, and progressive tracking logs.
+* **Academic Ledger Profile:** Interactive personalized portal profiling active course tracks, registration timelines, and historic performance summaries.
 
-Admin – manages all users, courses
+---
 
-Instructor – creates courses, assignments, materials, quizzes
+## 📦 Directory Structure Matrix
 
-Student – enrolls in courses, submits assignments & quizzes
-
-📚 Course Management
-
-Create and manage courses
-
-Upload course materials
-
-Track course progress
-
-📝 Assignment Management
-
-Create assignments
-
-Students upload submissions
-
-Instructors evaluate and score
-
-🧠 Quiz Management
-
-Create quizzes
-
-Add multiple-choice questions
-
-Students take quizzes; auto-scoring system
-
-📊 Performance Analytics
-
-Assignment & quiz score average
-
-Course-wise progress tracking
-
-Analytics dashboard
-
-🗂️ Database Structure
-
-Your LMS uses tables such as:
-
-users
-
-courses
-
-enrollments
-
-assignments
-
-assignment_submissions
-
-quizzes
-
-quiz_questions
-
-quiz_submissions
-
-materials
-
-performance_analytics
-
-(With proper foreign-key relationships)
-
-🛠️ Tech Stack
-Backend
-
-Java / Spring Boot (or specify your backend)
-
-MySQL database
-
-REST API architecture
-
-Frontend
-
-HTML5, CSS3, JavaScript
-
-Bootstrap / React / etc. (based on your project)
-
-Tools
-
-VS Code / IntelliJ
-
-Postman
-
-MySQL Workbench
+```text
+LearningManagementSystem/
+├── src/
+│   └── main/
+│       ├── java/
+│       │   └── com/
+│       │       └── lms/
+│       │           ├── controllers/    # Servlets routing HTTP request-response loops
+│       │           ├── models/         # Pure Java Objects (POJOs) defining core Entities
+│       │           ├── dao/            # Data Access Objects encapsulating pure SQL queries
+│       │           └── util/           # Connection factories and security utility toolsets
+│       └── webapp/
+│           ├── views/                  # Partitioned JSPs (Admin, Instructor, Student)
+│           ├── assets/                 # Shared client assets (Custom CSS templates, JS animations)
+│           └── WEB-INF/                # Server deployment descriptor config (web.xml)
+├── database/
+│   └── schema.sql                      # Production relational schema data structures
+└── pom.xml                             # Core Maven dependencies declaration
